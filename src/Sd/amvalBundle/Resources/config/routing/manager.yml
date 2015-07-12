@@ -1,0 +1,38 @@
+manager:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:manager:index" }
+
+manager_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:manager:show" }
+
+manager_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:manager:new" }
+
+manager_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:manager:create" }
+    requirements: { _method: post }
+
+manager_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:manager:edit" }
+
+manager_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:manager:update" }
+    requirements: { _method: post|put }
+
+manager_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:manager:delete" }
+    requirements: { _method: post|delete }
+
+manager_delete2:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:manager:delete2" }
+
+manager_search:
+    pattern:  /search
+    defaults: { _controller: "SdamvalBundle:manager:search" }

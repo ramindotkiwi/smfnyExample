@@ -1,0 +1,160 @@
+{% extends 'SdamvalBundle::layout.html.twig' %}
+{% block title %}لیست اموال{% endblock %}
+
+    {% block menutop %}
+        <div class="box-container">
+            <div class="box-holder">
+                <a href="{{ path('manager') }}">
+                    <div class="box active" id="menu1"><span><i class="icon-home"></i></span>صفحه ی اصلی</div>
+                </a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('messages') }}">
+                    <div class="box" id="menu2"><span><i class="icon-inbox"></i></span>پیام ها</div>
+                </a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('gallery') }}">
+                    <div class="box" id="menu3"><span><i class="icon-camera"></i></span>گالری</div>
+                </a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('user') }}">
+                    <div class="box" id="menu4"><span><i class="icon-user"></i></span>اطلاعات کاربری</div>
+                </a>
+            </div>
+        </div>
+    {% endblock %}
+    {% block rightmenu %}
+        <div class="span3">
+            <ul id="sidebar" class="nav nav-tabs nav-stacked">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('manager') }}"><i class="icon-manager"></i>&nbsp;&nbsp;مدیریت مدیران سازمان ها</a>
+                    </li>
+                    <li><a href="{{ path('subset') }}"><i class="icon-th-large"></i>&nbsp;&nbsp;ثبت زیر مجموعه</a></li>
+                {% elseif is_granted('ROLE_MANAGER') %}
+                    <li><a href="{{ path('subset') }}"><i class="icon-th-large"></i>&nbsp;&nbsp;ثبت زیر مجموعه</a></li>
+                {% endif %}
+                <li class="active"><a href="{{ path('kala') }}"><i class="icon-table"></i>&nbsp;&nbsp;ثبت اموال جدید</a>
+                </li>
+                <li><a href="{{ path('messages') }}"><i class="icon-comments-alt"></i>&nbsp;&nbsp;پیام ها<span
+                                class="label label-success pull-right">New!</span></a></li>
+                <li><a href="{{ path('recycle') }}"><i class="icon-globe"></i>&nbsp;&nbsp;ثبت اموال متلاشی شده<span
+                                class="label label-success pull-right">6</span></a></li>
+                <li><a href="#"><i class="icon-truck"></i>&nbsp;&nbsp;گروه بندی اموال<span
+                                class="label label-success pull-right">3</span></a></li>
+                <li><a href="#"><i class="icon-bolt"></i>&nbsp;&nbsp;گزارش گیری اموال</a></li>
+                <li><a href="#"><i class="icon-camera-retro"></i>&nbsp;&nbsp;درخواست اموال جدید</a></li>
+                <li><a href="{{ path('user') }}"><i class="icon-user"></i>&nbsp;&nbsp;اطلاعات کاربری</a></li>
+                <li><a href="{{ path('help') }}"><i class="icon-legal"></i>&nbsp;&nbsp;راهنما</a></li>
+            </ul>
+        </div>
+
+    {% endblock %}
+{% block content %}
+    <div class="span9 transition">
+        <h1 class="page-title">اموال</h1>
+
+
+        <div class="widget widget-table">
+            {% if app.session.hasFlash('notice') %}
+                <div class="alert alert-success">
+                    {{ app.session.flash('notice') }}
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            {% endif %}
+            <div class="widget-header">
+                <h3><i class="icon-list-alt"></i>&nbsp;&nbsp;لیست اموال</h3>
+            </div>
+            <div class="widget-content">
+                {% if entities|length >0 %}
+                    <fieldset>
+                        <form style="" action="{{ path('kala_search') }}" method="post">
+                            <input style="margin-top: 10px;margin-right: 10px" type="text" name="namesearch" id="namesearch" placeholder="نام کالا"/>
+                            <input class="btn btn-success" type="submit" value="جستجو"  >
+                        </form>
+                    </fieldset>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th style="width: 70px;">کد کالا</th>
+                            <th>نام کالا</th>
+                            <th>تعداد</th>
+                            <th>قیمت</th>
+                            <th>تاریخ ثبت</th>
+                            <th>امکانات</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for entity in entities %}
+                            <tr>
+                                <td><a href="{{ path('kala_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                <td>{{ entity.name }}</td>
+                                <td>{{ entity.count }}</td>
+                                <td>{{ entity.cost }}</td>
+                                <td>{{ entity.date }}</td>
+                                <td>
+                                    <a href="{{ path('kala_edit', { 'id': entity.id }) }}" rel="tooltip"
+                                       data-toggle="tooltip" title="ویرایش"
+                                       class="btn btn-primary btn-mini"><i class="icon-edit icon-2x"></i> ویرایش</a>
+                                    <a href="{{ path('kala_show', { 'id': entity.id }) }}" rel="tooltip"
+                                       data-toggle="tooltip" title="مشاهده جزئیات"
+                                       class="btn btn-mini btn-info delete-row"><i class="icon-list-alt icon-2x"></i>
+                                        جزئیات</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <br/>
+                    <div class="alert alert-success span5">اموالی ثبت نشده است</div>
+                {% endif %}
+            </div>
+            <br/>
+            <a href="{{ path('kala_new') }}" class="btn btn-primary"><i class="icon-plus"></i> ثبت اموال جدید</a>
+
+        </div>
+
+    </div>
+{% endblock %}
+{% block script %}
+    <!-- Javascript files -->
+    <script src="{{ asset('bundles/sdamval/js/bootstrap.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-transition.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-alert.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-affix.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-modal.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-dropdown.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-scrollspy.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-tab.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-tooltip.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-popover.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-button.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-collapse.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-carousel.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap-typeahead.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sdamval/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/bootstrap.js')}}"></script>
+    <!--Non-Bootstrap JS-->
+    <script type="text/javascript" src="{{ asset('bundles/sdamval/js/jquery.transit.min.js')}}"></script>
+
+    <script src="{{ asset('bundles/sdamval/js/jquery.smooth-scroll.min.js')}}"></script>
+    <script src="{{ asset('bundles/sdamval/js/jquery.quicksand.js')}}"></script>
+    <script type='text/javascript'>
+        var objCal1 = new AMIB.persianCalendar( 'objCal1', 'sd_amvalbundle_kalatype_date' );
+        $(document).ready(function () {
+            $("[rel=tooltip]").tooltip();
+            $('#t1').smoothScroll();
+            $(".transition").css("display", "none");
+            $(".transition").fadeIn(1000);
+        });
+        $(".delete-row").click(function () {
+            var conf = confirm('حذف شود؟');
+            if (conf) $(this).parents('tr').fadeOut(function () {
+                $(this).remove();
+            });
+        });
+    </script>
+{% endblock %}

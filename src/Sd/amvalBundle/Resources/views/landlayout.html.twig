@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>صفحه ی اصلی</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- @todo: fill with your company info or remove -->
+    <meta name="description" content="">
+    <meta name="author" content="Themelize.me">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('bundles/sdamval/assets2/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/assets2/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/assets2/css/bootstrap-responsive-rtl.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/assets2/css/bootstrap-rtl.css')}}" rel="stylesheet">
+    <!-- Flexslider -->
+    <link href="{{ asset('bundles/sdamval/assets2/css/flexslider.css')}}" rel="stylesheet">
+
+    <!-- Theme style -->
+    <link href="{{ asset('bundles/sdamval/assets2/css/theme-style.css')}}" rel="stylesheet">
+
+    <!--Your custom colour override-->
+    <link href="#" id="colour-scheme" rel="stylesheet">
+
+    <!-- Your custom override -->
+    <link href="{{ asset('bundles/sdamval/assets2/css/custom-style.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/assets2/css/font.css')}}" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/sdamval/assets2/js/html5.js')}}"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons - @todo: fill with your icons or remove -->
+    <link rel="shortcut icon" href="{{ asset('bundles/sdamval/assets2/img/fav.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://wbpreview.com/previews/WB0C6D0H4/img/icons/114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://wbpreview.com/previews/WB0C6D0H4/img/icons/72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="http://wbpreview.com/previews/WB0C6D0H4/img/icons/default.png">
+</head>
+{% endblock %}
+<body class="page page-index" >
+<div id="navigation" class="wrapper">
+    <div class="navbar  navbar-static-top">
+
+        <!--Hidden Header Region-->
+        <div class="header-hidden">
+            <div class="header-hidden-inner container">
+                <div class="row-fluid">
+                    <div class="span4">
+                        <h3>درباره ی ما</h3>
+                        <p>ما در حال توسعه ی یک سیستم مدیریت اموال جامع هستیم.</p>
+                        <a href="#about" class="btn btn-small btn-info">بیشتر بدانید</a> </div>
+                    <div class="span4">
+                        <!--@todo: replace with company contact details-->
+                        <h3>تماس با ما</h3>
+                        <address>
+                            <p><abbr title="Phone"><i class="icon-phone"></i></abbr> 09378672070</p>
+                            <p><abbr title="Email"><i class="icon-envelope"></i></abbr>s.dadigivshad@gmail.com</p>
+                            <p><abbr title="Address"><i class="icon-home"></i></abbr>خراسان جنوبی - بیرجند</p>
+                        </address>
+                    </div>
+                    <div class="span4">
+                        <!--Colour Switch for demo - @todo: remove in production-->
+                        <div class="colour-switcher">
+                            <h3>انتخاب رنگ قالب</h3>
+                            <a href="#green" class="green active _tooltip" data-placement="bottom" data-original-title="سبز">Green</a> <a href="#red" class="red _tooltip" data-placement="bottom" data-original-title="قرمز">Red</a> <a href="index.html#blue" class="blue _tooltip" data-placement="bottom" data-original-title="آبی">Blue</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Header & Branding region-->
+        <div class="header">
+            <div class="header-inner container">
+                <div class="row-fluid">
+                    <div class="span8">
+                        <!--branding/logo-->
+                        <a class="brand" href="{{ path('index') }}" title="Home">
+                            <h1><span>سیستم مدیریت </span>اموال اداری</h1>
+                        </a>
+                        <div class="slogan"><i class="icon-user text-success"></i> پشتیبانی 24 ساعته </div>
+                    </div>
+
+                    <!--header rightside-->
+                    <div class="span4">
+                        <div id="header-hidden-link"> <a href="#" class="show-hide" title="Click me you'll get a surprise" data-target=".header-hidden"><i></i>Open</a> </div>
+
+                        <!--social media icons-->
+                        <div class="social-media pull-right">
+                            <!--@todo: replace with company social media details-->
+                            <a href="#" rel="tooltip" data-toggle="tooltip" title="توئیتر" ><i class="icon-twitter"></i></a> <a href="#" rel="tooltip" data-toggle="tooltip" title="فیسبوک" ><i class="icon-facebook"></i></a> <a href="index.html#" rel="tooltip" data-toggle="tooltip" title="لینک ادین" ><i class="icon-linkedin"></i></a> <a href="index.html#" rel="tooltip" data-toggle="tooltip" title="گوگل پلاس" ><i class="icon-google-plus"></i></a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="navbar-inner">
+
+                <!--mobile collapse menu button-->
+                <a class="btn btn-navbar pull-left" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+
+                <!--user menu-->
+                <ul class="nav user-menu pull-left">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('manager') }}" class="btn btn-primary signup">ناحیه ی کاربری</a></li>
+                        <li><a href="{{ path('logout') }}" class="btn btn-primary signup">خروج</a></li>
+                    {%elseif is_granted('ROLE_MANAGER') %}
+                        <li><a href="{{ path('subset') }}" class="btn btn-primary signup">ناحیه ی کاربری</a></li>
+                        <li><a href="{{ path('logout') }}" class="btn btn-primary signup">خروج</a></li>
+                     {%elseif is_granted('ROLE_USER') %}
+                         <li><a href="{{ path('kala') }}" class="btn btn-primary signup">ناحیه ی کاربری</a></li>
+                         <li><a href="{{ path('logout') }}" class="btn btn-primary signup">خروج</a></li>
+                     {% else %}
+                            <li><a href="{{ path('signup') }}" class="btn btn-primary signup">عضو شوید</a></li>
+                    <li><a href="{{ path('login') }}" class="btn btn-primary signup">ورود</a></li>
+                    {% endif %}
+                </ul>
+                <form class="form-search pull-left">
+                    <input type="text" id="search" class="input-medium search-query" placeholder="جستجو...">
+                </form>
+                <!--everything within this div is collapsed on mobile-->
+                <div class="nav-collapse collapse">
+
+                    <!--main navigation-->
+                    <ul class="nav" id="main-menu">
+                        <li class="home-link"><a href="{{ path('index') }}"><i class="icon-home"></i><span class="visible-phone">صفحه ی اصلی</span></a></li>
+                        <li class="dropdown"><a href="#features" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown"><i class="icon-star"></i> ویژگی ها</a>
+                            <!-- Dropdown Menu -->
+                        </li>
+                        <li><a href="#customers" class="menu-item"> <i class="icon-user"></i> مشتریان ما</a></li>
+                        <li> <a href="#about" class="menu-item"><i class="icon-comment-alt"></i>  درباره ی ما</a>
+                        </li>
+
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" id="pages-drop" data-toggle="dropdown"> <i class="icon-plus"></i>  بیشتر...</a>
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="pages-drop">
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li role="menuitem"><a href="{{ path('manager') }}" tabindex="-1" class="menu-item" >ناحیه ی کاربری</a></li>
+                                    <li role="menuitem"><a href="{{ path('logout') }}" tabindex="-1" class="menu-item">خروج</a></li>
+                                {% else %}
+                                <li role="menuitem"><a href="{{ path('manager') }}" tabindex="-1" class="menu-item" >ورود</a></li>
+                                <li role="menuitem"><a href="{{ path('signup') }}" tabindex="-1" class="menu-item">عضویت</a></li>
+                                {% endif %} </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</div>
+{% block slider %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+<div id="content-below" class="wrapper">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="upsell"> <small class="muted">99.9% بروز <span class="spacer">//</span> آپدیت رایگان <span class="spacer">//</span> پشتیبانی 24 ساعته <span class="spacer">//</span> محصولات متنوع <span class="spacer">//</span> </small> <a href="pricing.htm" class="btn btn-info">آزمایش کنید <i class="icon-circle-arrow-left"></i></a> </div>
+        </div>
+    </div>
+</div>
+{% block footer %}
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span3 col">
+                <div class="block contact-block">
+                    <!--@todo: replace with company contact details-->
+                    <h3>ارتباط با ما</h3>
+                    <address>
+                        <p><abbr title="تلفن"><i class="icon-phone"></i></abbr>  09378672070</p>
+                        <p><abbr title="ایمیل"><i class="icon-envelope"></i></abbr>  s.dadigivshad@gmail.com</p>
+                        <p><abbr title="آدرس"><i class="icon-home"></i></abbr>   خراسان جنوبی - بیرجند</p>
+                    </address>
+                </div>
+            </div>
+            <div class="span5 col">
+                <div class="block">
+                    <h3>درباره ی ما</h3>
+                    <p>ما در حال توسعه ی یک سیستم جامع مدیریت اموال اعم از دولتی و خصوصی هستیم.</p>
+                </div>
+            </div>
+            <div class="span4 col">
+                <div class="block newsletter">
+                    <h3>خبرنامه</h3>
+                    <p>برای اطلاع از آخرین اخبار عضو شوید</p>
+                    <!--@todo: replace with mailchimp code-->
+                    <form class="form-inline">
+                        <div class="input-append">
+                            <input class="input-medium" type="text" placeholder="ایمیل" />
+                            <button class="btn btn-primary" type="button"><i class="icon-ok"></i> تایید</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="toplink"><a id="t1" href="#navigation" class="top-link" title="Back to top">بالای صفحه <i class="icon-circle-arrow-up icon-small"></i></a></div>
+            <!--@todo: replace with company copyright details-->
+            <div class="subfooter">
+                <div class="span6">
+                    <p id="about" class="text-info">طراحی و اجرا سعید دادی گیوشاد | کپی رایت &copy 2013</p>
+                </div>
+                <div class="span6">
+                    <ul class="inline pull-left">
+                        <li><a href="#">قوانین</a></li>
+                        <li><a href="#">مجوزها</a></li>
+                        <li><a href="#">ارتباط با ما</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+<!--Scripts -->
+{% block js %}
+<script src="{{ asset('bundles/sdamval/assets2/js/jquery.js')}}"></script>
+
+<!-- @todo: remove unused Javascript for better performance -->
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-transition.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-alert.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-affix.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-modal.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-dropdown.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-scrollspy.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-tab.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-tooltip.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-popover.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-button.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-collapse.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-carousel.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/bootstrap-typeahead.js')}}"></script>
+<!--Non-Bootstrap JS-->
+<script src="{{ asset('bundles/sdamval/assets2/js/jquery.quicksand.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/jquery.flexslider-min.js')}}"></script>
+<!--Custom scripts mainly used to trigger libraries -->
+<script src="{{ asset('bundles/sdamval/assets2/js/script.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/assets2/js/jquery.smooth-scroll.min.js')}}'"></script>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        $("[rel=tooltip]").tooltip();
+        $('#t1').smoothScroll();
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("body").css("display", "none");
+        $("body").fadeIn(1000);
+        $("a.transition").click(function(event){
+            event.preventDefault();
+            linkLocation = this.href;
+            $("body").fadeOut(1000, redirectPage);
+        });
+        function redirectPage() {
+            window.location = linkLocation;
+        }
+    });
+</script>
+{% endblock %}
+</body>
+</html>

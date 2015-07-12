@@ -1,0 +1,77 @@
+{% extends 'SdamvalBundle::layout.html.twig' %}
+{% block title %}ویرایش زیرمجموعه{% endblock %}
+
+    {% block menutop %}
+        <div class="box-container">
+            <div class="box-holder">
+                <a href="{{ path('manager') }}"><div class="box active" id="menu1"><span><i class="icon-home"></i></span>صفحه ی اصلی</div></a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('messages') }}"><div class="box" id="menu2"><span><i class="icon-inbox"></i></span>پیام ها</div></a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('gallery') }}"><div class="box" id="menu3"><span><i class="icon-camera"></i></span>گالری</div></a>
+            </div>
+            <div class="box-holder">
+                <a  href="{{ path('user') }}"><div class="box" id="menu4"><span><i class="icon-user"></i></span>اطلاعات کاربری</div></a>
+            </div>
+        </div>
+    {% endblock %}
+    {% block rightmenu %}
+        <div class="span3">
+            <ul id="sidebar" class="nav nav-tabs nav-stacked">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('manager') }}"><i class="icon-manager"></i>&nbsp;&nbsp;مدیریت مدیران سازمان ها</a>
+                    </li>
+                {% endif %}  <li class="active"><a href="{{ path('subset') }}"><i class="icon-th-large"></i>&nbsp;&nbsp;ثبت زیر مجموعه</a></li>
+                <li><a href="{{ path('kala') }}"><i class="icon-table"></i>&nbsp;&nbsp;ثبت اموال جدید</a></li>
+                <li><a href="{{ path('messages') }}"><i class="icon-comments-alt"></i>&nbsp;&nbsp;پیام ها<span class="label label-success pull-right">New!</span></a></li>
+                <li><a href="{{ path('recycle') }}"><i class="icon-globe"></i>&nbsp;&nbsp;ثبت اموال متلاشی شده<span class="label label-success pull-right">6</span></a></li>
+                <li><a href="#"><i class="icon-truck"></i>&nbsp;&nbsp;گروه بندی اموال<span class="label label-success pull-right">3</span></a></li>
+                <li><a href="#"><i class="icon-bolt"></i>&nbsp;&nbsp;گزارش گیری اموال</a></li>
+                <li><a href="#"><i class="icon-camera-retro"></i>&nbsp;&nbsp;درخواست اموال جدید</a></li>
+                <li><a href="{{ path('user') }}"><i class="icon-user"></i>&nbsp;&nbsp;اطلاعات کاربری</a></li>
+                <li><a href="{{ path('help') }}"><i class="icon-legal"></i>&nbsp;&nbsp;راهنما</a></li>
+            </ul>
+        </div>
+
+    {% endblock %}
+{% block content %}
+    <div class="span9 transition">
+        <div class="widget">
+            <div class="widget-header">
+                <h3><i class="icon-pencil"></i>&nbsp;&nbsp;ویرایش زیرمجموعه</h3>
+            </div>
+            <div class="widget-content">
+                <form action="{{ path('subset_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="span8"><label>نام زیرمجموعه</label>
+                        {{ form_errors(edit_form.name) }}
+                        {{ form_widget(edit_form.name,{'attr': {'class': 'span4'} }) }}
+                    </div>
+                    <div class="span8"><label>تاریخ </label>
+                        {{ form_errors(edit_form.date) }}
+                        {{ form_widget(edit_form.date,{'attr': {'class': 'span4'} }) }}
+                    </div>
+                    <div class="span8"><label>توضیحات</label>
+                        {{ form_errors(edit_form.description) }}
+                        {{ form_widget(edit_form.description,{'attr': {'class': 'span4'} }) }}
+                    </div>
+                    <div class="span8"><label>سطح دسترسی</label>
+                        {{ form_errors(edit_form.permit) }}
+                        {{ form_widget(edit_form.permit,{'attr': {'class': 'span4'} }) }}
+                    </div>
+                    <div class="span3 pull-right">
+                        <input type="submit"  class="btn btn-info btn-user-info" value="ثبت تغییرات"/>
+                    </div>
+                    <div style="display: none">
+                        {{ form_widget(edit_form._token) }}
+                    </div>
+                </form>
+                <div class="span2" style="float: left">
+                    <a class="btn btn-success" href="{{ path('subset') }}"><i class="icon-undo"></i> بازگشت به لیست</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

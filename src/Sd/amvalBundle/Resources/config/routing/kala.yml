@@ -1,0 +1,35 @@
+kala:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:kala:index" }
+
+kala_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:kala:show" }
+
+kala_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:kala:new" }
+
+kala_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:kala:create" }
+    requirements: { _method: post }
+
+kala_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:kala:edit" }
+
+kala_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:kala:update" }
+    requirements: { _method: post|put }
+
+kala_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:kala:delete" }
+    requirements: { _method: post|delete }
+
+kala_search:
+    pattern:  /search
+    defaults: { _controller: "SdamvalBundle:kala:search" }
+    requirements: { _method: post }

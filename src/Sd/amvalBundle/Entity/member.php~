@@ -1,0 +1,62 @@
+<?php
+namespace Sd\amvalBundle\Entity;
+use Doctrine\ORM\Mapping AS ORM;
+
+/** 
+ * @ORM\Entity
+ */
+class member
+{
+    /** 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $fn;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $ln;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $birthdate;
+
+    /** 
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $age;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $address;
+
+    /** 
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $phone;
+
+    /** 
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    private $pic;
+
+    /** 
+     * @ORM\OneToMany(targetEntity="message", mappedBy="member")
+     */
+    private $messages;
+
+    /** 
+     * @ORM\ManyToOne(targetEntity="manager", inversedBy="members")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id", nullable=false)
+     */
+    private $manager;
+}

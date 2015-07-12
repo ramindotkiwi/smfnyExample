@@ -1,0 +1,30 @@
+category:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:category:index" }
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:category:show" }
+
+category_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:category:new" }
+
+category_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:category:create" }
+    requirements: { _method: post }
+
+category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:category:edit" }
+
+category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:category:update" }
+    requirements: { _method: post|put }
+
+category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:category:delete" }
+    requirements: { _method: post|delete }

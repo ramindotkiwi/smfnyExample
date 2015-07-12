@@ -1,0 +1,47 @@
+messages:
+    pattern:  /messages
+    defaults: { _controller: SdamvalBundle:Default:messages }
+
+gallery:
+    pattern:  /gallery
+    defaults: { _controller: SdamvalBundle:Default:gallery }
+
+user:
+    pattern:  /user
+    defaults: { _controller: SdamvalBundle:Default:user }
+
+pass:
+    pattern:  /pass
+    defaults: { _controller: SdamvalBundle:Default:changepass }
+
+help:
+    pattern:  /help
+    defaults: { _controller: SdamvalBundle:Default:help }
+
+recycle:
+    pattern:  /recycle
+    defaults: { _controller: SdamvalBundle:Default:recycle }
+
+subset:
+    pattern:  /subset
+    defaults: { _controller: SdamvalBundle:Default:subset }
+
+category:
+    resource: "@SdamvalBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+kala:
+    resource: "@SdamvalBundle/Resources/config/routing/kala.yml"
+    prefix:   /kala
+
+member:
+    resource: "@SdamvalBundle/Resources/config/routing/member.yml"
+    prefix:   /
+
+message:
+    resource: "@SdamvalBundle/Resources/config/routing/message.yml"
+    prefix:   /message
+
+subset:
+    resource: "@SdamvalBundle/Resources/config/routing/subset.yml"
+    prefix:   /subset

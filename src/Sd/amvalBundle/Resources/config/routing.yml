@@ -1,0 +1,43 @@
+index:
+    pattern:  /
+    defaults: { _controller: SdamvalBundle:Default:home }
+
+login:
+    pattern:  /login
+    defaults: { _controller: SdamvalBundle:Default:index }
+
+login2:
+    pattern:  /login2
+    defaults: { _controller: SdamvalBundle:Default:login2 }
+
+signup:
+    pattern:  /register
+    defaults: { _controller: SdamvalBundle:Default:signup }
+
+logout:
+    pattern:  /logout
+    defaults: { _controller: SdamvalBundle:Default:login }
+
+b_member:
+    pattern:  /b_member/kala
+    defaults: { _controller: "SdamvalBundle:kala:index" }
+
+b_manager:
+    pattern:  /b_manager/subset
+    defaults: { _controller: "SdamvalBundle:subset:index" }
+
+admin:
+    pattern:  /admin/manager
+    defaults: { _controller: "SdamvalBundle:manager:index" }
+
+admin2:
+    resource: "@SdamvalBundle/Resources/config/admin.yml"
+    prefix:   /admin
+
+b_manager2:
+    resource: "@SdamvalBundle/Resources/config/manager.yml"
+    prefix:   /b_manager
+
+b_member2:
+    resource: "@SdamvalBundle/Resources/config/member.yml"
+    prefix:   /b_member

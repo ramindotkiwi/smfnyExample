@@ -1,0 +1,30 @@
+member:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:member:index" }
+
+member_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:member:show" }
+
+member_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:member:new" }
+
+member_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:member:create" }
+    requirements: { _method: post }
+
+member_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:member:edit" }
+
+member_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:member:update" }
+    requirements: { _method: post|put }
+
+member_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:member:delete" }
+    requirements: { _method: post|delete }

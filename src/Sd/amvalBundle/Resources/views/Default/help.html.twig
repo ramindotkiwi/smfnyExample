@@ -1,0 +1,62 @@
+{% extends 'SdamvalBundle::layout.html.twig' %}
+    {% block menutop %}
+        <div class="box-container">
+            <div class="box-holder">
+                <a href="{{ path('manager') }}"><div class="box active" id="menu1"><span><i class="icon-home"></i></span>صفحه ی اصلی</div></a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('messages') }}"><div class="box" id="menu2"><span><i class="icon-inbox"></i></span>پیام ها</div></a>
+            </div>
+            <div class="box-holder">
+                <a href="{{ path('gallery') }}"><div class="box" id="menu3"><span><i class="icon-camera"></i></span>گالری</div></a>
+            </div>
+            <div class="box-holder">
+                <a  href="{{ path('user') }}"><div class="box" id="menu4"><span><i class="icon-user"></i></span>اطلاعات کاربری</div></a>
+            </div>
+        </div>
+    {% endblock %}
+    {% block rightmenu %}
+        <div class="span3">
+            <ul id="sidebar" class="nav nav-tabs nav-stacked">
+                {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('manager') }}"><i class="icon-manager"></i>&nbsp;&nbsp;مدیریت مدیران سازمان ها</a>
+                </li>
+                <li><a href="{{ path('subset') }}"><i class="icon-th-large"></i>&nbsp;&nbsp;ثبت زیر مجموعه</a></li>
+            {% elseif is_granted('ROLE_MANAGER') %}
+                <li><a href="{{ path('subset') }}"><i class="icon-th-large"></i>&nbsp;&nbsp;ثبت زیر مجموعه</a></li>
+                {% endif %}
+                <li><a href="{{ path('kala') }}"><i class="icon-table"></i>&nbsp;&nbsp;ثبت اموال جدید</a></li>
+                <li><a href="{{ path('messages') }}"><i class="icon-comments-alt"></i>&nbsp;&nbsp;پیام ها<span class="label label-success pull-right">New!</span></a></li>
+                <li><a href="{{ path('recycle') }}"><i class="icon-globe"></i>&nbsp;&nbsp;ثبت اموال متلاشی شده<span class="label label-success pull-right">6</span></a></li>
+                <li><a href="#"><i class="icon-truck"></i>&nbsp;&nbsp;گروه بندی اموال<span class="label label-success pull-right">3</span></a></li>
+                <li><a href="#"><i class="icon-bolt"></i>&nbsp;&nbsp;گزارش گیری اموال</a></li>
+                <li><a href="#"><i class="icon-camera-retro"></i>&nbsp;&nbsp;درخواست اموال جدید</a></li>
+                <li><a href="{{ path('user') }}"><i class="icon-user"></i>&nbsp;&nbsp;اطلاعات کاربری</a></li>
+                <li class="active"><a href="{{ path('help') }}"><i class="icon-legal"></i>&nbsp;&nbsp;راهنما</a></li>
+            </ul>
+        </div>
+    {% endblock %}
+{% block content %}
+    <div class="span9 transition">
+        <h1 class="page-title">راهنما - سوالات متداول</h1>
+
+        <div class="widget">
+            <div class="widget-content">
+                <ol>
+                    <li>
+                        <h4><i class="icon-check"></i>&nbsp;&nbsp;نحوه ی ثبت اموال</h4>
+
+                        <p>
+                            برای ثبت کالا ابتدا فرم مربوطه را پر کرده و سپس دکمه ی ذخیره را فشار دهید.
+                        </p>
+                    </li>
+                    <li>
+                        <h4><i class="icon-check"></i>&nbsp;&nbsp;گزارش گیری از اموال ثبت شده</h4>
+
+                        <p>برای گزارش گیری ابتدا کالاهای مورد نظر را انتخاب کرده سپس دکمه ی گزارش را فشار دهید.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+{% endblock %}

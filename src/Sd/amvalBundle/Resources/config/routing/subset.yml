@@ -1,0 +1,30 @@
+subset:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:subset:index" }
+
+subset_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:subset:show" }
+
+subset_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:subset:new" }
+
+subset_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:subset:create" }
+    requirements: { _method: post }
+
+subset_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:subset:edit" }
+
+subset_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:subset:update" }
+    requirements: { _method: post|put }
+
+subset_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:subset:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+permit:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:permit:index" }
+
+permit_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:permit:show" }
+
+permit_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:permit:new" }
+
+permit_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:permit:create" }
+    requirements: { _method: post }
+
+permit_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:permit:edit" }
+
+permit_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:permit:update" }
+    requirements: { _method: post|put }
+
+permit_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:permit:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+message:
+    pattern:  /
+    defaults: { _controller: "SdamvalBundle:message:index" }
+
+message_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SdamvalBundle:message:show" }
+
+message_new:
+    pattern:  /new
+    defaults: { _controller: "SdamvalBundle:message:new" }
+
+message_create:
+    pattern:  /create
+    defaults: { _controller: "SdamvalBundle:message:create" }
+    requirements: { _method: post }
+
+message_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SdamvalBundle:message:edit" }
+
+message_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SdamvalBundle:message:update" }
+    requirements: { _method: post|put }
+
+message_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SdamvalBundle:message:delete" }
+    requirements: { _method: post|delete }

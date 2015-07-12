@@ -1,0 +1,8 @@
+parameters:
+     security.authentication.success_handler.class: Sd\amvalBundle\Handler\AuthenticationSuccessHandler
+
+services:
+    security.authentication.customized_success_handler:
+        class: %security.authentication.success_handler.class%
+        public: false
+        arguments:  [@router, @security.context]

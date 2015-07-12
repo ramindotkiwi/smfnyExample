@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- CSS files-->
+    <link href="{{ asset('bundles/sdamval/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/css/dashboard.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="{{ asset('bundles/sdamval/css/font-awesome/css/font-awesome-ie7.min.css')}}">
+    <![endif]-->
+    <link href="{{ asset('bundles/sdamval/css/bootstrap-rtl.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/css/bootstrap-responsive-rtl.css')}}" rel="stylesheet">
+    <link href="{{ asset('bundles/sdamval/css/font.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--calender-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/sdamval/calender/js-persian-cal.css')}}" />
+    <script type="text/javascript" src="{{ asset('bundles/sdamval/calender/js-persian-cal.min.js')}}"></script>
+    <!--calender-->
+{% endblock %}
+</head>
+{% block body %}
+<body style="direction: rtl;">
+{% block navbar %}
+<div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner ">
+        <div class="container">
+            <a class="brand" href="#">مدیریت سیستم اموال</a>
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="divider-vertical"></li>
+                    <li><a href="{{ path('messages') }}"><i class="icon-comments-alt"></i>&nbsp;&nbsp;پیام ها&nbsp;&nbsp;<span class="label label-important"></span></a></li>
+                    <li class="divider-vertical"></li>
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-cloud"></i>&nbsp;&nbsp;مدیر<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('user') }}"><i class="icon-file"></i>&nbsp;&nbsp;پروفایل</a></li>
+                            <li><a href="{{ path('pass') }}"><i class="icon-key"></i>&nbsp;&nbsp;تغییر رمز عبور</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="{{ path('logout') }}"><i class="icon-lock"></i>&nbsp;&nbsp;خروج</a></li>
+                    <li class="divider-vertical"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<div id="main-content">
+<!-- Container -->
+<div class="container">
+    {% block menutop %}
+    {% endblock %}
+    <div class="row">
+        {% block rightmenu %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+</div>
+<!-- /Container -->
+{% block footer %}
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span3 col">
+                <div class="block contact-block">
+                    <!--@todo: replace with company contact details-->
+                    <h3>ارتباط با ما</h3>
+                    <address>
+                        <p><abbr title="تلفن"><i class="icon-phone"></i></abbr>  09378672070</p>
+                        <p><abbr title="ایمیل"><i class="icon-envelope"></i></abbr>  s.dadigivshad@gmail.com</p>
+                        <p><abbr title="آدرس"><i class="icon-home"></i></abbr>   خراسان جنوبی - بیرجند</p>
+                    </address>
+                </div>
+            </div>
+            <div class="span5 col">
+                <div class="block">
+                    <h3>درباره ی ما</h3>
+                    <p>ما در حال توسعه ی یک سیستم جامع مدیریت اموال اعم از دولتی و خصوصی هستیم.</p>
+                </div>
+            </div>
+            <div class="span4 col">
+                <div class="block newsletter">
+                    <h3>خبرنامه</h3>
+                    <p>برای اطلاع از آخرین اخبار عضو شوید</p>
+                    <!--@todo: replace with mailchimp code-->
+                    <form class="form-inline">
+                        <div class="input-append">
+                            <input class="input-medium" type="text" placeholder="ایمیل" />
+                            <button class="btn btn-primary" type="button"><i class="icon-ok"></i> تایید</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div id="toplink"><a id="t1" href="#navigation" class="top-link" title="Back to top">بالای صفحه <i class="icon-circle-arrow-up"></i></a></div>
+            <!--@todo: replace with company copyright details-->
+            <div class="subfooter">
+                <div class="span6">
+                    <p class="text-info">طراحی و اجرا سعید دادی گیوشاد | کپی رایت &copy 2013</p>
+                </div>
+                <div class="span6">
+                    <ul class="inline pull-left">
+                        <li><a href="#">قوانین</a></li>
+                        <li><a href="#">مجوزها</a></li>
+                        <li><a href="#">ارتباط با ما</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+</div>
+<!-- /Main content -->
+{% block script %}
+<!-- Javascript files -->
+<script src="{{ asset('bundles/sdamval/js/bootstrap.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-transition.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-alert.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-affix.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-modal.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-dropdown.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-scrollspy.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-tab.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-tooltip.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-popover.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-button.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-collapse.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-carousel.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap-typeahead.js')}}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sdamval/js/jquery.min.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/bootstrap.js')}}"></script>
+<!--Non-Bootstrap JS-->
+<script type="text/javascript" src="{{ asset('bundles/sdamval/js/jquery.transit.min.js')}}"></script>
+
+<script src="{{ asset('bundles/sdamval/js/jquery.smooth-scroll.min.js')}}"></script>
+<script src="{{ asset('bundles/sdamval/js/jquery.quicksand.js')}}"></script>
+<script type='text/javascript'>
+    var objCal1 = new AMIB.persianCalendar( 'objCal1', 'sd_amvalbundle_subsettype_date' );
+    $(document).ready(function () {
+        $("[rel=tooltip]").tooltip();
+        $('#t1').smoothScroll();
+        $(".transition").css("display", "none");
+        $(".transition").fadeIn(1000);
+    });
+    $(".delete-row").click(function () {
+        var conf = confirm('حذف شود؟');
+        if (conf) $(this).parents('tr').fadeOut(function () {
+            $(this).remove();
+        });
+    });
+</script>
+{% endblock %}
+</body>
+{% endblock %}
+</html>

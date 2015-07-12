@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>member</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Fn</th>
+                <td>{{ entity.fn }}</td>
+            </tr>
+            <tr>
+                <th>Ln</th>
+                <td>{{ entity.ln }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ entity.birthdate }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ entity.age }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ entity.address }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ entity.phone }}</td>
+            </tr>
+            <tr>
+                <th>Pic</th>
+                <td>{{ entity.pic }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('member') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('member_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('member_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
